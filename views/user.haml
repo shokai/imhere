@@ -1,0 +1,8 @@
+- content_for :title do
+  = @title
+
+%h2 @#{@user.name}
+%h3 Location
+%ul#location
+  %li#lat lat : #{@user.loc['lat']}
+  %li#lon lon : #{@user.loc['lon']}
