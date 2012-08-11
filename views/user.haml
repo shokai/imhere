@@ -8,7 +8,10 @@
   %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
   %script{:type => 'text/javascript', :src => "#{app_root}/js/user_location.js"}
 
-%h2 @#{@user.name}
+%h2
+  %img{:src => "http://twiticon.herokuapp.com/#{@user.name}"}
+  %span#user @#{@user.name}
+%input{:value => 'Update Location', :type => :button, :name => :btn_update_location}
 %h3 Location
 %ul#location
   %li#lat
@@ -17,6 +20,4 @@
   %li#lon
     lon :
     %span.val= @user.loc['lon']
-%input{:value => 'Update Location', :type => :button, :name => :btn_update_location}
-
 %div#map
