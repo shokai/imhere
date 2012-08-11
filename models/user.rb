@@ -16,6 +16,15 @@ class User
   end
 
   :public
+  def to_json(*a)
+    {
+      :name => self.name,
+      :loc => self.loc,
+      :updated_at => self.updated_at,
+      :created_at => self.created_at
+    }.to_json(*a)
+  end
+
   def self.find_by_name(name)
     self.where(:name => name).limit(1).first
   end

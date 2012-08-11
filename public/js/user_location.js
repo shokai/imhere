@@ -1,8 +1,10 @@
 $(function(){
-  console.log('start');
+  console.log(user.name);
+  Map.setLocation(user.loc);
   Location.onGet = function(loc){
     console.log(loc);
     console.log('https://maps.google.com/?ll='+loc.lat+','+loc.lon);
+    save_location(loc);
     Map.setLocation(loc);
   };
   $('[name=btn_update_location]').click(function(){
@@ -10,6 +12,12 @@ $(function(){
     Location.start();
   });
 });
+
+var save_location = function(loc){
+  $.post(app_root+'/loc/'+user.name+'.json', loc, function(data, stat, xhr){
+    console.log(data);
+  }, 'json')
+};
 
 var Map = new (function(){
   var self = this;
