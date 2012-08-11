@@ -17,13 +17,12 @@ end
 
 post Regexp.new "^/loc/(#{user_regex}).json$" do
   name = params['captures'][0]
-  @user = User.find_by_name name
-  halt 404, "user \"#{name}\" not exists." unless @user
   unless params['lat'] and params['lon']
     halt 400, 'Bad Request : params "lat" and "lon" required'
   end
   lat = params['lat'].to_f
   lon = params['lon'].to_f
+  @user = User.find_or_create_by_name name
   @user.loc = {:lat => lat, :lon => lon}
   halt 500, 'Save Error' unless @user.save
   @user.to_json
