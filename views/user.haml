@@ -1,8 +1,19 @@
 - content_for :title do
   = @title
 
+- content_for :head do
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
+  %script{:type => 'application/javascript', :src => "#{app_root}/js/user_location.js"}
+
 %h2 @#{@user.name}
 %h3 Location
 %ul#location
-  %li#lat lat : #{@user.loc['lat']}
-  %li#lon lon : #{@user.loc['lon']}
+  %li#lat
+    lat :
+    %span.val= @user.loc['lat']
+  %li#lon
+    lon :
+    %span.val= @user.loc['lon']
+%input{:value => 'Update Location', :type => :button, :name => :btn_update_location}
+
+%div#map
