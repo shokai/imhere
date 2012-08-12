@@ -59,6 +59,8 @@ Local Ruby <---> Heroku MongoDB
 
     % ruby -Ku bin/console.rb
     > User.find_by_name :shokai
+    > User.count
+    > User.all(:limit => 20).map &:name
 
 
 LICENSE
