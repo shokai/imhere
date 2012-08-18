@@ -3,6 +3,7 @@ before '/*.json' do
 end
 
 get '/' do
+  @user = User.find_by_token session[:token]
   haml :index
 end
 

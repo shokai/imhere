@@ -1,5 +1,6 @@
 require 'twitter'
 require 'oauth'
+require 'digest/md5'
 
 configure :development do
   set :sessions, true
@@ -19,10 +20,4 @@ def consumer
   OAuth::Consumer.new(Conf['twitter_consumer_key'],
                       Conf['twitter_consumer_secret'],
                       :site => "http://twitter.com")
-end
-
-def auth?
-  return true if session[:access_token] and session[:access_token_secret]
-  return false
-  !!session[:token]
 end

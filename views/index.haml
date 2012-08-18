@@ -1,6 +1,9 @@
 %div.login
-  - if auth?
-    %div.user= "@#{session['twitter_name']}"
+  - if @user
+    %div
+      %a{:href => "https://twitter.com/#{@user.name}"}
+        %img{:src => @user.icon_url}
+        %span.user= "@#{@user.name}"
     %a{:href => "#{app_root}/logout"} logout
   - else
     %a{:href => "#{app_root}/login"} login
