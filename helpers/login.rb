@@ -19,5 +19,5 @@ end
 def consumer
   OAuth::Consumer.new(Conf['twitter_consumer_key'],
                       Conf['twitter_consumer_secret'],
-                      :site => "http://twitter.com")
+                      :site => "https://twitter.com")
 end
