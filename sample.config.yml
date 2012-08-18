@@ -1,1 +1,6 @@
 title : 'imhere'
+twitter_consumer_key : 'twitter-consumer-key'
+twitter_consumer_secret : 'twitter-consumer-secret-key'
+
+session_domain : 'http://imhere.herokuapp.com'
+session_secret : '!!__hello__!!'
